@@ -24,6 +24,7 @@ gridsome create my-gridsome-site
 
 ### gridsome 项目安装依赖注意事项
 
+- npm i -g node-gyp
 - 配置 `node-gyp` 编译环境 https://github.com/nodejs/node-gyp
 - 国内环境可能安装失败,所以需要配置 npm 淘宝镜像
   - `npm config set sharp_binary_host "https://npm.taobao.org/mirrors/sharp"`
@@ -34,6 +35,7 @@ gridsome create my-gridsome-site
 
 ```bash
 ├── src
+│   ├── .temp # build后生成的结果文件
 │   ├── components # 公共组件
 │   ├── layouts # 布局组件
 │   ├── pages # 页面路由组件
@@ -46,6 +48,34 @@ gridsome create my-gridsome-site
 ├── gridsome.server.js # 针对服务端的配置文件
 ├── package-lock.json
 └── package.json
+```
+
+### 创建路由页面的方式
+
+- 直接在`pages`创建文件夹
+- 通过`gridsome.server`文件的`api`创建
+
+```js
+api.createPages(({ createPage }) => {
+	createPage({
+		path: "/my-page",
+		component: "./src/templates/MyPage.vue",
+	})
+})
+```
+
+### 动态路由
+
+- 直接在`pages`创建文件夹。如[id].vue，其中 id 就是动态部分
+- 通过`gridsome.server`文件的`api`创建
+
+```js
+api.createPages(({ createPage }) => {
+	createPage({
+		path: "/other/:id(\\d+)",
+		component: "./src/templates/other.vue",
+	})
+})
 ```
 
 # Default starter for Gridsome

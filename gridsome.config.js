@@ -5,6 +5,7 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: 'Gridsome',
-  plugins: []
+	siteName: "static-site", // 网页标题
+	siteDescription: "static", // meta content 标签配置  -> seo
+	plugins: [], // 插件配置
 }

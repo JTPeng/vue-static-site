@@ -1,7 +1,8 @@
 {
-  "name": "my-gridsome-site",
+  "name": "vue-static-site",
   "private": true,
   "scripts": {
+    "dev": "gridsome develop",
     "develop": "gridsome develop",
     "explore": "gridsome explore",
     "build": "gridsome build"
