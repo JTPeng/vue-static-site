@@ -13,6 +13,7 @@ module.exports = function(api) {
     const collection = addCollection('Post')
     const { data } = await axios.get('http://jsonplaceholder.typicode.com/posts')
     for (const item of data) {
+			// 添加节点
       collection.addNode({
         id: item.id,
         title: item.title,

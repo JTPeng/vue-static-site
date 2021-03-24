@@ -3,7 +3,7 @@
     <h1>Post2-GraphQL获取数据进行预渲染</h1>
     <ul>
       <li v-for="item in $page.article.edges" :key="item.node.id">
-        <g-link to="/">{{ item.node.title }}</g-link>
+        <g-link :to="item.node.path">{{ item.node.title }}</g-link>
       </li>
     </ul>
   </Layout>
@@ -16,7 +16,7 @@ query {
       node{
         id,
         title,
-        content
+        path
       }
     }
   }
