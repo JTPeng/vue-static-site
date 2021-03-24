@@ -7,7 +7,15 @@
 module.exports = {
   siteName: 'static-site', // 网页标题
   siteDescription: 'static', // meta content 标签配置  -> seo
-  plugins: [], // 插件配置
+  plugins: [
+    {
+      use: '@gridsome/source-filesystem',
+      options: {
+        path: 'content/blog/*.md',
+        typeName: 'markdownPost',
+      },
+    },
+  ], // 插件配置
   templates: {
     Post: [
       {

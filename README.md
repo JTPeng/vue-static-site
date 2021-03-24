@@ -86,7 +86,16 @@ api.createPages(({ createPage }) => {
 - `Api`数据,在`gridsome.server`中直接配置。然后注入到集合,最后页面通过`GraphQL`来获取`Collections`中的数据
 
 ### Templates 模板设置
+
 - > 参考: https://www.gridsome.cn/docs/templates/
+
+### markdown 支持
+
+```shell
+npm install @gridsome/transformer-remark // markdown转成html
+npm install @gridsome/source-filesystem
+```
+
 # Default starter for Gridsome
 
 This is the project you get when you run `gridsome create new-project`.
