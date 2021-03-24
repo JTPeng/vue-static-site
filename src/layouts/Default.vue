@@ -7,6 +7,8 @@
       <nav class="nav">
         <g-link class="nav__link" to="/">Home</g-link>
         <g-link class="nav__link" to="/about/">About</g-link>
+        <g-link class="nav__link" to="/post1/">Post1</g-link>
+        <g-link class="nav__link" to="/post2/">Post2</g-link>
       </nav>
     </header>
     <slot/>

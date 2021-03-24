@@ -57,10 +57,10 @@ gridsome create my-gridsome-site
 
 ```js
 api.createPages(({ createPage }) => {
-	createPage({
-		path: "/my-page",
-		component: "./src/templates/MyPage.vue",
-	})
+  createPage({
+    path: '/my-page',
+    component: './src/templates/MyPage.vue',
+  })
 })
 ```
 
@@ -71,12 +71,19 @@ api.createPages(({ createPage }) => {
 
 ```js
 api.createPages(({ createPage }) => {
-	createPage({
-		path: "/other/:id(\\d+)",
-		component: "./src/templates/other.vue",
-	})
+  createPage({
+    path: '/other/:id(\\d+)',
+    component: './src/templates/other.vue',
+  })
 })
 ```
+
+### Collections 集合
+
+- > 参考集合使用： https://www.gridsome.cn/docs/collections/
+- > 参考页面中使用 GraphQL 使用： https://www.gridsome.cn/docs/querying-data/
+- 用于`预渲染`动态的数据
+- `Api`数据,在`gridsome.server`中直接配置。然后注入到集合,最后页面通过`GraphQL`来获取`Collections`中的数据
 
 # Default starter for Gridsome
 

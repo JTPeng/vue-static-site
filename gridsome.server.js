@@ -5,22 +5,33 @@
 // Changes here require a server restart.
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
+const axios = require('axios')
 module.exports = function(api) {
-	api.loadSource(({ addCollection }) => {
-		// Use the Data Store API here: https://gridsome.org/docs/data-store-api/
-	})
-	// 通过Api创建路由页面
-	api.createPages(({ createPage }) => {
-		// Use the Pages API here: https://gridsome.org/docs/pages-api/
-		createPage(
-			{
-				path: "/my-page",
-				component: "./src/templates/MyPage.vue",
-			},
-			{
-				path: "/users/:id(\\d+)",
-				component: "./src/templates/Users.vue",
-			}
-		)
-	})
+  api.loadSource(async ({ addCollection }) => {
+    // Use the Data Store API here: https://gridsome.org/docs/data-store-api/
+    // 使用collection集合实现api数据请求的预渲染
+    const collection = addCollection('Post')
+    const { data } = await axios.get('http://jsonplaceholder.typicode.com/posts')
+    for (const item of data) {
+      collection.addNode({
+        id: item.id,
+        title: item.title,
+        content: item.body,
+      })
+    }
+  })
+  // 通过Api创建路由页面
+  api.createPages(({ createPage }) => {
+    // Use the Pages API here: https://gridsome.org/docs/pages-api/
+    createPage(
+      {
+        path: '/my-page',
+        component: './src/templates/MyPage.vue',
+      },
+      {
+        path: '/users/:id(\\d+)',
+        component: './src/templates/Users.vue',
+      }
+    )
+  })
 }
